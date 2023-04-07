@@ -1,0 +1,10 @@
+button
+{
+display: inline-block;
+margin: 0 auto;
+padding: 0 auto;
+}
+.center
+{
+text-align: center;
+}
