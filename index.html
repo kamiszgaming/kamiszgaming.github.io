@@ -72,15 +72,18 @@
 </div>
 
 <script>
-    // Ustawienie minimalnej daty na dzień po dzisiejszym
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const yyyy = tomorrow.getFullYear();
-    const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
-    const dd = String(tomorrow.getDate()).padStart(2, '0');
-    const minDate = `${yyyy}-${mm}-${dd}`;
-    document.getElementById('date').setAttribute('min', minDate);
+    // Ustawienie minimalnej daty na dzień po dzisiejszym lub 1 lipca 2025, w zależności co jest późniejsze
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(tomorrow.getDate() + 1);
+const minManualDate = new Date('2025-07-01');
+
+const minDate = tomorrow > minManualDate ? tomorrow : minManualDate;
+
+const yyyy = minDate.getFullYear();
+const mm = String(minDate.getMonth() + 1).padStart(2, '0');
+const dd = String(minDate.getDate()).padStart(2, '0');
+document.getElementById('date').setAttribute('min', `${yyyy}-${mm}-${dd}`);
 </script>
 
 </body>
